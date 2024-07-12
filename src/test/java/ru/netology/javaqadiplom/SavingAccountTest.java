@@ -102,6 +102,78 @@ public class SavingAccountTest {
     }
 
     @Test
+    public void testInitialBalanceBeforeNull() {
+        Assertions.assertThrows(IllegalArgumentException.class, ()-> {
+            new SavingAccount(
+                    -10,
+                    1000,
+                    10000,
+                    5
+            );
+        });
+    }
+
+    @Test
+    public void testMinBalanceBeforeNull() {
+        Assertions.assertThrows(IllegalArgumentException.class, ()-> {
+            new SavingAccount(
+                    2000,
+                    -10,
+                    10000,
+                    5
+            );
+        });
+    }
+
+    @Test
+    public void testMaxBalanceBeforeNull() {
+        Assertions.assertThrows(IllegalArgumentException.class, ()-> {
+            new SavingAccount(
+                    2000,
+                    1000,
+                    -10,
+                    5
+            );
+        });
+    }
+
+    @Test
+    public void testMaxBalanceLessMinBalance() {
+        Assertions.assertThrows(IllegalArgumentException.class, ()-> {
+            new SavingAccount(
+                    2000,
+                    10000,
+                    1000,
+                    5
+            );
+        });
+    }
+
+    @Test
+    public void testInitialBalanceLessMinBalance() {
+        Assertions.assertThrows(IllegalArgumentException.class, ()-> {
+            new SavingAccount(
+                    500,
+                    1000,
+                    10000,
+                    5
+            );
+        });
+    }
+
+    @Test
+    public void testInitialBalanceOverMaxBalance() {
+        Assertions.assertThrows(IllegalArgumentException.class, ()-> {
+            new SavingAccount(
+                    50000,
+                    1000,
+                    10000,
+                    5
+            );
+        });
+    }
+
+    @Test
     public void testGetMinBalance() {
         SavingAccount account = new SavingAccount(
                 2000,
