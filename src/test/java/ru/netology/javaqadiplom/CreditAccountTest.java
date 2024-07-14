@@ -17,6 +17,7 @@ public class CreditAccountTest {
 
         Assertions.assertEquals(3_000, account.getBalance());
     }
+
     @Test
     public void rateIsNegative() {
         int exceptionCounter = 0;
@@ -280,4 +281,20 @@ public class CreditAccountTest {
         Assertions.assertEquals(expected, actual);
 
     }
+
+    @Test
+    public void shouldAddToCreditLimit() {
+        CreditAccount account = new CreditAccount(
+                1000,
+                1000,
+                15
+        );
+
+        int expected = 1000;
+        int actual = account.getCreditLimit();
+        Assertions.assertEquals(expected, actual);
+    }
+
 }
+
+
