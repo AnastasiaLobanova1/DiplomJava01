@@ -285,12 +285,12 @@ public class CreditAccountTest {
     @Test
     public void shouldAddToCreditLimit() {
         CreditAccount account = new CreditAccount(
-                1000,
-                1000,
+                100,
+                100,
                 15
         );
 
-        int expected = 1000;
+        int expected = 100;
         int actual = account.getCreditLimit();
         Assertions.assertEquals(expected, actual);
     }
