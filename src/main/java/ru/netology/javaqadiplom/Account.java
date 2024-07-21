@@ -5,11 +5,22 @@ public class Account {
     protected int rate;
 
     public boolean pay(int amount) {
-        return false;
+        if (amount <= 0) {
+            return false;
+        }
+        if (balance - amount < 0) {
+            return false;
+        }
+        balance = balance - amount;
+        return true;
     }
 
     public boolean add(int amount) {
-        return false;
+        if (amount <= 0) {
+            return false;
+        }
+        balance = balance + amount;
+        return true;
     }
 
     public int yearChange() {
@@ -26,5 +37,9 @@ public class Account {
 
     public void setRate(int rate) {
         this.rate = rate;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
     }
 }
